@@ -1,0 +1,11 @@
+D:\F\接口\20141014-SVN\JSJ_IFlight\Jsj.Email\Jsj.Email\ShenNiu.LogTool\bin\Debug\netcoreapp1.1\win7-x64\hostpolicy.dll
+D:\F\接口\20141014-SVN\JSJ_IFlight\Jsj.Email\Jsj.Email\ShenNiu.LogTool\bin\Debug\netcoreapp1.1\win7-x64\hostfxr.dll
+D:\F\接口\20141014-SVN\JSJ_IFlight\Jsj.Email\Jsj.Email\ShenNiu.LogTool\bin\Debug\netcoreapp1.1\win7-x64\ShenNiu.LogTool.exe
+D:\F\接口\20141014-SVN\JSJ_IFlight\Jsj.Email\Jsj.Email\ShenNiu.LogTool\bin\Debug\netcoreapp1.1\win7-x64\ShenNiu.LogTool.deps.json
+D:\F\接口\20141014-SVN\JSJ_IFlight\Jsj.Email\Jsj.Email\ShenNiu.LogTool\bin\Debug\netcoreapp1.1\win7-x64\ShenNiu.LogTool.runtimeconfig.json
+D:\F\接口\20141014-SVN\JSJ_IFlight\Jsj.Email\Jsj.Email\ShenNiu.LogTool\bin\Debug\netcoreapp1.1\win7-x64\ShenNiu.LogTool.runtimeconfig.dev.json
+D:\F\接口\20141014-SVN\JSJ_IFlight\Jsj.Email\Jsj.Email\ShenNiu.LogTool\bin\Debug\netcoreapp1.1\win7-x64\ShenNiu.LogTool.dll
+D:\F\接口\20141014-SVN\JSJ_IFlight\Jsj.Email\Jsj.Email\ShenNiu.LogTool\bin\Debug\netcoreapp1.1\win7-x64\ShenNiu.LogTool.pdb
+D:\F\接口\20141014-SVN\JSJ_IFlight\Jsj.Email\Jsj.Email\ShenNiu.LogTool\obj\Debug\netcoreapp1.1\win7-x64\ShenNiu.LogTool.AssemblyInfo.cs
+D:\F\接口\20141014-SVN\JSJ_IFlight\Jsj.Email\Jsj.Email\ShenNiu.LogTool\obj\Debug\netcoreapp1.1\win7-x64\ShenNiu.LogTool.dll
+D:\F\接口\20141014-SVN\JSJ_IFlight\Jsj.Email\Jsj.Email\ShenNiu.LogTool\obj\Debug\netcoreapp1.1\win7-x64\ShenNiu.LogTool.pdb

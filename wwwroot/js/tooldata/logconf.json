@@ -1,0 +1,20 @@
+﻿[
+  {
+    "gname": "日志",
+    "gval": [
+      {
+        "name": "JokeLog",
+        "val": "D:\\D\\Joke"
+      }
+    ]
+  },
+  {
+    "gname": "D盘",
+    "gval": [
+      {
+        "name": "D盘",
+        "val": "D:\\"
+      }
+    ]
+  }
+]

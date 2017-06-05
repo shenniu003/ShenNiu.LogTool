@@ -1,0 +1,148 @@
+﻿@using System.IO
+@using ShenNiu.LogTool.Extension;
+@using ShenNiu.LogTool.Controllers
+@model List<FileSystemInfo>
+@{
+    ViewData["Title"] = "日志搜索";
+
+    var moSearch = ViewData["Search"] as MoSearch;
+}
+<div>
+    <h4>@ViewData["Title"]</h4>
+    <hr />
+    <form id="form01" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="txt1">磁盘路径</label>
+            <input type="text" class="form-control" id="txt1" name="txt1" value="@moSearch.Txt1" style="max-width:100%" placeholder="会记录到后面的下拉框">
+        </div>
+        <div class="form-group">
+            <label for="sel1">常用地址</label>
+            <select name="sel1" id="sel1" class="form-control">
+                @*<option value="">==请选择==</option>
+                    <optgroup label="日志">
+                        <option value="D:\D\Joke">D:\D\Joke</option>
+                    </optgroup>
+                    <optgroup label="D盘">
+                        <option value="D:\">D盘</option>
+                    </optgroup>*@
+            </select>
+
+        </div>
+        <div class="form-group ">
+            <input type="file" name="upFile" class="form-control" multiple placeholder="上传文件" />
+        </div>
+        <button type="button" id="btnSearch" class="btn btn-default">查 询</button>
+        <button type="button" id="btnUp" class="btn btn-default ">上 传</button>
+        <a href="javascript:window.history.go(-1);" class="btn btn-default">返 回</a>
+        <span id="span01" style="color:red">
+            @ViewData["msg"]
+        </span>
+    </form>
+    <hr />
+    <table class="table">
+        <thead>
+            <tr>
+                <th>文件名</th>
+                <th>磁盘路径</th>
+                <th>最后更新时间</th>
+                <th>创建时间</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    @if (item.Attributes == FileAttributes.Archive)
+                        {
+                        <img src="/images/icon/@(item.Extension.GetExtensionIcon())" /><a href="/log/read?path=@item.FullName" target="_blank">@item.Name</a>
+                        }
+                        else if (item.Attributes == FileAttributes.Directory)
+                        {
+                        <img src="/images/icon/Directory1.jpg" /><a href="/log/index?path=@item.FullName">@item.Name</a>
+                        }
+                        else
+                        {
+                        <img src="/images/icon/@(item.Extension.GetExtensionIcon())" /><a href="/log/index?path=@item.FullName">@item.Name</a>
+                        }
+                    @item.Attributes
+                </td>
+                <td>@item.FullName</td>
+                <td>@item.LastWriteTime</td>
+                <td>@item.CreationTime</td>
+                <td>
+                    @if (item.Attributes == FileAttributes.Archive)
+                        {
+                        <a href="/log/read?path=@item.FullName" target="_blank">查看</a>
+                        }
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+    <div style="color:red">@ViewData["msg"]</div>
+</div>
+<script type="text/javascript">
+    $(function(){
+
+    $("#btnUp").on("click", function () {
+            var msg = $("#span01");
+            var form = document.getElementById("form01");
+            //console.log(form);
+            var data = new FormData(form);
+
+            $.ajax({
+                type: "POST",
+                url: "/log/AjaxFileUp",
+                data: data,
+
+                contentType: false,
+                processData: false,
+                success: function (data) {
+                    if (data) {
+                        msg.html(data.msg);
+                    }
+                },
+                error: function () {
+                    msg.html("上传文件异常,请稍后重试！");
+                }
+            });
+        });
+
+        $("#btnSearch").on("click",function(){
+
+         var sel1Val = $.trim($("select[name='sel1'] option:selected").val());
+         var txt1Val = $.trim($("#txt1").val());
+
+
+         var pathVal = sel1Val.length<=0?txt1Val:sel1Val;
+         window.location.href="/log/index?path="+pathVal;
+        });
+
+        $.getJSON("/log/GetSelData",function(data){
+            console.log(data);
+            if(data){
+
+
+
+                var sel1 = $("select[name='sel1']");
+                var gArr = [];
+                gArr.push('<option value="">==请选择==</option>');
+                $.each(data,function(i,item){
+
+                    gArr.push('<optgroup label="'+item.gname+'">');
+
+                    $.each(item.gval,function(i2,item2){
+
+                         gArr.push('<option value="'+item2.val+'">'+item2.name+'</option>');
+                    });
+
+                    gArr.push('</optgroup>');
+                });
+
+                sel1.html(gArr.join(''));
+            }
+        });
+    })
+</script>
